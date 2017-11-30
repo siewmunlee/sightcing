@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         #map {
-            height: 895px;
+            height: 94vh;
             width: 100%;
             top: 25px;
         }
@@ -21,34 +21,66 @@
 
 <body onload="setup()">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
-        <a class="navbar-brand font-weight-bold" href="#" style="font-size:2.25rem">Sight-C-ing</a>
+        <a class="navbar-brand font-weight-bold mx-auto" href="#" style="font-size:2.25rem">Sight-C-ing</a>
     </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar" style="top:80px">
                 <div class="col-sm-12">
                     <h6 style="margin-bottom:16px">Upload you own route!</h6>
-                    <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Random gpx file here" readonly>
+                    <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Upload GPX file here" readonly>
                     <p>
                         <input style="display:none" type="file" id="myFile">
                         <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' />
-
                     </p>
+
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Use Instructions
+                              </a>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="card-block">
+                                    <p class="card-text">1. Select the
+                                        <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' /> button above.
+                                    </p>
+                                    <p class="card-text">
+                                        2. Only <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> files are allowed to upload.
+                                    </p>
+                                    <p>
+                                        <p class="card-text" style="position: justify">
+                                            3. The route will then be reflect automatically onto the map.
+                                        </p>
+                                        <p class="card-text" style="text-decoration: underline">Legend</p>
+                                        <p class="card-text">
+                                            <img class="w-8" src="MapIcons/flag.ico" alt="logo"> - Landmarks near route
+                                        </p>
+                                        <p class="card-text">We hope you enjoy using <b>Sight-C-ing</b>!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3" id="map"></main>
             <script>
                 function initMap() {
-                    var uluru = { lat: 1.3521, lng: 103.8198 };
+                    var uluru = {
+                        lat: 1.3521,
+                        lng: 103.8198
+                    };
                     var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 12,
                         center: uluru
@@ -58,13 +90,16 @@
                         map: map
                     });
                 }
+
                 function setup() {
                     debugger;
                     document.getElementById('uploadbtn').addEventListener('click', openDialog);
+
                     function openDialog() {
                         document.getElementById('myFile').click();
                     }
                 }
+
                 function getValue() {
                     debugger;
                     var filename = document.getElementById('myFile').value;
@@ -73,6 +108,13 @@
             </script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initMap">
             </script>
+
+            <script>
+                $(document).ready(function() {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
+
         </div>
     </div>
 </body>

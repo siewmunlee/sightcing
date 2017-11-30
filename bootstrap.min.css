@@ -4350,7 +4350,7 @@ tbody.collapse.show {
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: inherit;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .navbar-brand:focus,
@@ -7908,6 +7908,10 @@ a.bg-inverse:hover {
     margin: 0;
     overflow: visible;
     clip: auto
+}
+
+.w-8 {
+    width: 8%
 }
 
 .w-25 {
