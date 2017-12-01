@@ -39,7 +39,8 @@
             <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar" style="top:80px">
                 <div class="col-sm-12">
                     <h6 style="margin-bottom:16px">Upload you own route!</h6>
-                    <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Upload GPX file here" readonly>
+                    <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Upload GPX file here"
+                        readonly>
                     <p>
                         <input style="display:none" type="file" id="myFile">
                         <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' style="cursor:pointer" />
@@ -98,28 +99,39 @@
                         position: uluru,
                         map: map
                     });
-                    debugger;
+                }
+
+                function madas() {
+                    var uluru = {
+                        lat: 1.3521,
+                        lng: 103.8198
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 12,
+                        center: uluru
+                    });
                     var kmllayer = new google.maps.KmlLayer({
                         url: 'https://filedn.com/lm4zorFr1SXyubFpgucPOgY/TESTING-CHANGI.kml',
                         map: map
                     });
                 }
 
-
-
                 function setup() {
+                    var fullPath = '';
                     document.getElementById('uploadbtn').addEventListener('click', openDialog);
 
                     function openDialog() {
                         document.getElementById('myFile').click();
+                        fullPath = document.getElementById('myFile').value;
                     }
                 }
 
-                function getValue() {
-                    debugger;
-                    var filename = document.getElementById('myFile').value;
+                jQuery("input#myFile").change(function () {
+                    document.getElementById('gpxtext').placeholder = 'Change.gpx';
+                    $('#gpxtext').css({'background-color' : '#65ca65'});
+                    madas()          
+                });
 
-                }
             </script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initMap">
             </script>
