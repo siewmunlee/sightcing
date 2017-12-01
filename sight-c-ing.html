@@ -21,9 +21,12 @@
 
 <body onload="setup()">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
@@ -47,8 +50,8 @@
                             <div class="card-header" role="tab" id="headingOne">
                                 <h5 class="mb-0">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Use Instructions
-                              </a>
+                                        Use Instructions
+                                    </a>
                                 </h5>
                             </div>
 
@@ -58,7 +61,8 @@
                                         <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' /> button above.
                                     </p>
                                     <p class="card-text">
-                                        2. Only <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> files are allowed to upload.
+                                        2. Only
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> files are allowed to upload.
                                     </p>
                                     <p>
                                         <p class="card-text" style="position: justify">
@@ -68,7 +72,8 @@
                                         <p class="card-text">
                                             <img class="w-8" src="MapIcons/flag.ico" alt="logo"> - Landmarks near route
                                         </p>
-                                        <p class="card-text">We hope you enjoy using <b>Sight-C-ing</b>!</p>
+                                        <p class="card-text">We hope you enjoy using
+                                            <b>Sight-C-ing</b>!</p>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +85,7 @@
             <!-- Map Frame -->
             <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3" id="map"></main>
             <script>
+                var src = 'https://www.dropbox.com/home?preview=TESTING-CHANGI.kml';
                 function initMap() {
                     var uluru = {
                         lat: 1.3521,
@@ -93,10 +99,16 @@
                         position: uluru,
                         map: map
                     });
+                    debugger;
+                    var kmllayer = new google.maps.KmlLayer({
+                        url: 'https://filedn.com/lm4zorFr1SXyubFpgucPOgY/TESTING-CHANGI.kml',
+                        map: map
+                    });
                 }
 
+
+
                 function setup() {
-                    debugger;
                     document.getElementById('uploadbtn').addEventListener('click', openDialog);
 
                     function openDialog() {
@@ -114,7 +126,7 @@
             </script>
 
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
