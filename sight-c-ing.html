@@ -21,12 +21,10 @@
 
 <body onload="setup()">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src 'togetjson.js'></script>
 
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
@@ -39,8 +37,7 @@
             <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar" style="top:80px">
                 <div class="col-sm-12">
                     <h6 style="margin-bottom:16px">Upload you own route!</h6>
-                    <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Upload GPX file here"
-                        readonly>
+                    <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Upload GPX file here" readonly>
                     <p>
                         <input style="display:none" type="file" id="myFile">
                         <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' style="cursor:pointer" />
@@ -77,6 +74,11 @@
                                             <b>Sight-C-ing</b>!</p>
                                 </div>
                             </div>
+
+                            <!-- testing -->
+                            <textarea id="testingtextbox" rows="4" cols="50">
+                            </textarea>
+
                         </div>
                     </div>
 
@@ -126,19 +128,24 @@
                     }
                 }
 
-                jQuery("input#myFile").change(function () {
+                // Web Service to extract GPX from file
+
+                // Web Service to convert from GPX to GeoJSON
+
+                jQuery("input#myFile").change(function() {
                     document.getElementById('gpxtext').placeholder = 'Change.gpx';
                     $('#gpxtext').addClass('whiteplaceholder');
-                    $('#gpxtext').css({'background-color' : '#65ca65'});
-                    madas()          
+                    $('#gpxtext').css({
+                        'background-color': '#65ca65'
+                    });
+                    madas()
                 });
-
             </script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initMap">
             </script>
 
             <script>
-                $(document).ready(function () {
+                $(document).ready(function() {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
