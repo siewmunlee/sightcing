@@ -42,7 +42,6 @@
 </head>
 
 <body onload="setup()">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -262,20 +261,51 @@
                             loadGeoJsonString(plainText);
                         }
                     }
+
+                    // infoWindow = new google.maps.InfoWindow;
+
+                    // var lctn = {
+                    //     lat: map.getCenter().lat(),
+                    //     lng: map.getCenter().lng()
+                    // };
+
+                    // var service = new google.maps.places.PlacesService(map);
+                    // service.nearbySearch({
+                    //     location: lctn,
+                    //     radius: 2000,
+                    //     type: ['store']
+                    // }, callGooglePlaces);
                 }
+
+                // function callGooglePlaces(results, status) {
+                //     if (status === google.maps.places.PlacesServiceStatus.OK) {
+                //         for (var i = 0; i < results.length; i++) {
+                //             createNearbyLandmarksMarker(results[i]);
+                //         }
+                //     }
+                // }
+
+
+                // function createNearbyLandmarksMarker(place) {
+                //     var placeLoc = place.geometry.location;
+                //     var marker = new google.maps.Marker({
+                //         map: map,
+                //         position: place.geometry.location
+                //     });
+
+                //     google.maps.event.addListener(marker, 'click', function() {
+                //         infowindow.setContent(place.name);
+                //         infowindow.open(map, this);
+                //     });
+                // }
 
                 function initialize() {
                     initMap();
                     initEvents();
                 }
-
-                // Web Service to extract GPX from file
-
-                // Web Service to convert from GPX to GeoJSON
             </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initialize">
-            </script>
-
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initialize"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=readFile" async defer></script>
 
             <!-- PREVIOUS KML Map Frame -->
             <!--
