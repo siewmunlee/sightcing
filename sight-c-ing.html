@@ -42,7 +42,7 @@
 </head>
 
 <body onload="setup()">
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -90,7 +90,7 @@
                                         </p>
                                         <p class="card-text" style="text-decoration: underline">Legend</p>
                                         <p class="card-text">
-                                            <img class="w-8" src="MapIcons/flag.ico" alt="logo"> - Landmarks near route
+                                            <img class="w-15" src="https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w60" alt="logo"> - Current Location
                                         </p>
                                         <p class="card-text">We hope you enjoy using
                                             <b>Sight-C-ing</b>!</p>
@@ -109,7 +109,13 @@
             <script>
                 /* Map functions */
 
-                var map;
+                var map, infoWindow, marker;
+
+                var icons = {
+                    currentLoc: {
+                        icon: "/MapIcons/flag.ico"
+                    }
+                }
 
                 function initMap() {
                     // set up the map
@@ -117,6 +123,43 @@
                         center: new google.maps.LatLng(1.352083, 103.851959),
                         zoom: 12
                     });
+
+                    infoWindow = new google.maps.InfoWindow;
+
+                    // Try HTML5 geolocation.
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(pos.lat, pos.lng),
+                                map: map,
+                                title: 'Location lor',
+                                icon: "https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w45"
+                            });
+
+
+                            // infoWindow.setPosition(pos);
+                            // infoWindow.setContent('Current Location');
+                            // infoWindow.open(map);
+                            map.setCenter(pos, 16);
+                        }, function() {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                }
+
+                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+                    infoWindow.open(map);
                 }
 
                 function loadGeoJsonString(geoString) {
