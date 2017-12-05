@@ -219,18 +219,7 @@
                             loadGeoJsonString(plainText);
                         }
                     }
-
-                    jQuery("input#myFile").change(function() {
-                        document.getElementById('gpxtext').placeholder = 'Change.gpx';
-                        $('#gpxtext').addClass('whiteplaceholder');
-                        $('#gpxtext').css({
-                            'background-color': '#65ca65'
-                        });
-                        madas()
-                    });
-
                 }
-
 
                 function initialize() {
                     initMap();
