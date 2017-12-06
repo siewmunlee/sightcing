@@ -10,41 +10,15 @@
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="dashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        #map {
-            height: 93.333334vh;
-            width: 100%;
-            top: 25px;
-        }
-        
-        #drop-container {
-            display: none;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            z-index: 1;
-            top: 25px;
-            left: 25%;
-            padding: 20px;
-            background-color: rgba(100, 100, 100, 0.5);
-        }
-        
-        #drop-silhouette {
-            color: white;
-            border: white dashed 8px;
-            height: 100%;
-            width: 75%;
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAAZiS0dEAGQAZABkkPCsTwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90LHAIvICWdsKwAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAACdklEQVR42u3csU7icBzA8Xp3GBMSeRITH8JHMY7cRMvmVmXoE9TAcJubhjD4ApoiopgqDMWAKAgIcSAiCfxuwhwROVJbkPD9rP23ob8vpZCQKgoAAAAAAAAAAPDYyiK/eNM05bNtr6+vSjgcXiHxDMkE1WpVFvGcfpCVICAIQUAQgoAgBAFBCAKCgCAEAUEIAoIQBAQhCAgCghAEBCEICEIQEIQgIAgIQhAQhCAgCEFAEIKAICAIQUAQgoAgBAFBCDIzhmFINBo9/K6D0XVddnd3ZaneDY7jSCqVcn3SfjyeKRKJbJ2dnYllWbKUl2i5XJaXlxdJJBIy7yDHx8fy9vYm6XR6OWMM3d/fi4hIqVSSWCwmsw5ycHAgrVZLRETOz8+XO8ZQpVJ5H2Y6nRZN0/b9DqLruhSLxfd9MpkMMT6L0uv1JJlMih9BhveJwWDwvv7i4oIY4zw8PIwMtt1uSzweF6+CHB0dSbfbHVmbzWaJMcnj4+OHAd/d3cne3p64DWKapjw/P39Yd3l5SYxpVKvVsYO2LEtUVd2ZNoiu6+I4ztg1V1dXxPAiSq/Xk5OTk0k9pNVqyenp6ch94l+5XI4YbtRqNfHa9fX1t43xcwGa/Nnc3PwdDAY9OZht28rGxgZPvP6KSCSy9fT09OUrw7ZtPqa8jFKv113HuLm5IYbXVFXdcRPl9vaWGH5GaTQaU8fI5/PE8JumafvNZvO/MQqFAjFmJRqNHk6Ksqgx5vr1zzAM2d7edr3/6uqqsra2NnZbp9NR+v2+62OHQqG5zObXPIMEAgFlfX3dl2N79btl1viTA0FAEIKAIAQBAAAAAAAAsMz+Ai1bUgo6ebm8AAAAAElFTkSuQmCC');
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
 </head>
 
 <body onload="setup()">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
     <script src="togeojson.js"></script>
 
     <!-- Header Navigation Bar -->
@@ -55,7 +29,7 @@
     <!-- Side Navigation Bar -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-3 hidden-xs-down bg-faded sidebar" style="top:80px">
+            <div class="col-sm-3 col-md-3 hidden-xs-down bg-faded sidebar" style="top:77px">
                 <div class="col-sm-12">
                     <h6 style="margin-bottom:16px">Upload you own route!</h6>
                     <input class="form-control" style="margin-bottom:16px" id="gpxtext" type="text" placeholder="Upload GPX file here" readonly>
@@ -119,7 +93,7 @@
                 function initMap() {
                     // set up the map
                     map = new google.maps.Map(document.getElementById('map'), {
-                        center: new google.maps.LatLng(1.352083, 103.851959),
+                        center: new google.maps.LatLng(1.352083, 103.751959),
                         zoom: 12
                     });
 
@@ -127,7 +101,7 @@
 
                     // Try HTML5 geolocation.
                     if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
                             var pos = {
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude
@@ -143,8 +117,8 @@
                             // infoWindow.setPosition(pos);
                             // infoWindow.setContent('Current Location');
                             // infoWindow.open(map);
-                            map.setCenter(pos, 16);
-                        }, function() {
+                            //map.setCenter(pos, 16);
+                        }, function () {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
                     } else {
@@ -173,7 +147,7 @@
                  */
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
-                    map.data.forEach(function(feature) {
+                    map.data.forEach(function (feature) {
                         processPoints(feature.getGeometry(), bounds.extend, bounds);
                     });
                     map.fitBounds(bounds);
@@ -193,7 +167,7 @@
                     } else if (geometry instanceof google.maps.Data.Point) {
                         callback.call(thisArg, geometry.get());
                     } else {
-                        geometry.getArray().forEach(function(g) {
+                        geometry.getArray().forEach(function (g) {
                             processPoints(g, callback, thisArg);
                         });
                     }
@@ -237,17 +211,18 @@
                 }
 
                 function readFile(e) {
+                    debugger;
                     var files = e.dataTransfer.files;
                     if (files.length) {
                         // process file(s) being dropped
                         // grab the file data from each file
                         for (var i = 0, file; file = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(file);
@@ -275,6 +250,39 @@
                     //     radius: 2000,
                     //     type: ['store']
                     // }, callGooglePlaces);
+                }
+
+                function setup() {
+                    var fullPath = '';
+                    document.getElementById('uploadbtn').addEventListener('click', openDialog);
+
+                    function openDialog() {
+                        document.getElementById('myFile').click();
+                        fullPath = document.getElementById('myFile').value;
+                    }
+
+                    function handleFileSelect(evt) {
+                        var files = evt.target.files; // FileList object
+
+                        for (var i = 0, f; f = files[i]; i++) {
+                            debugger;
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                debugger;
+                                var result = e.target.result;
+                                loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
+                            };
+                            reader.onerror = function (e) {
+                                console.error('reading failed');
+                            };
+                            reader.readAsText(f);
+                            document.getElementById('gpxtext').placeholder = f.name;
+                            $('#gpxtext').addClass('whiteplaceholder');
+                            $('#gpxtext').css({ 'background-color': '#65ca65' });
+                        }
+                    }
+
+                    document.getElementById('myFile').addEventListener('change', handleFileSelect, false);
                 }
 
                 // function callGooglePlaces(results, status) {
@@ -305,7 +313,7 @@
                 }
             </script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initialize"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=readFile" async defer></script>
+            <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=readFile" async defer></script>-->
 
             <!-- PREVIOUS KML Map Frame -->
             <!--
@@ -364,7 +372,7 @@
         -->
 
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
