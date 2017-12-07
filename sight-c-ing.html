@@ -13,17 +13,11 @@
 </head>
 
 <body onload="setup()">
-<<<<<<< .merge_file_a18236
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
-=======
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
->>>>>>> .merge_file_a07352
     <script src="togeojson.js"></script>
 
     <!-- Header Navigation Bar -->
@@ -177,13 +171,8 @@
                  */
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
-<<<<<<< .merge_file_a18236
-                    map.data.forEach(function (feature) {
-                        processPoints(feature.getGeometry(), bounds.extend, bounds, map);
-=======
                     map.data.forEach(function(feature) {
                         processPoints(feature.getGeometry(), bounds.extend, bounds);
->>>>>>> .merge_file_a07352
                     });
                     map.fitBounds(bounds);
                 }
@@ -324,12 +313,8 @@
 
                         for (var i = 0, f; f = files[i]; i++) {
                             var reader = new FileReader();
-<<<<<<< .merge_file_a18236
-                            reader.onload = function (e) {
-=======
                             reader.onload = function(e) {
                                 debugger;
->>>>>>> .merge_file_a07352
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
