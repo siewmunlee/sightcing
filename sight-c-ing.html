@@ -62,6 +62,11 @@
                     <p>
                         <input style="display:none" type="file" id="myFile">
                         <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' style="cursor:pointer" />
+                        <!-- <font class="card-text" style="font-size:22px">
+                            Filter by
+                        </font>
+                        <input type="checkbox" id="eateries"> Eateries
+                        <input type="checkbox" id="attractions"> Attractions -->
                     </p>
 
                     <p></p>
@@ -72,7 +77,6 @@
                             <b> Distance:</b>
                         </font>
                         <font class="card-text" id="distanceValueInKm" style="font-size:22px">
-
                         </font> km
                     </div>
 
@@ -88,7 +92,6 @@
                                 <tr>
                                     <td>testing value lol</td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -207,6 +210,10 @@
                         'Error: Your browser doesn\'t support geolocation.');
                     infoWindow.open(map);
                 }
+
+                // function chooseLandmarks() {
+                //     document.getElementById("checkbox").checked = true;
+                // }
 
                 function loadGeoJsonString(geoString) {
                     var geojson = JSON.parse(geoString);
@@ -328,9 +335,11 @@
 
                     // landmark details
                     google.maps.event.addListener(marker, 'click', function() {
+
+
                         var placeName = place.name;
                         var placeID = place.place_id;
-                        var placePhoneNumber = place.formatted_phone;
+                        var placePhoneNumber = mynumbr(3800000, 9499999);
                         if (place.photos != null) {
                             var placePhoto = place.photos[0].getUrl({
                                 'maxWidth': 200
@@ -342,18 +351,19 @@
                         // i want a insert a new row here
 
                         if (placeRating > 0 && placePhoto != null) {
-                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: +65 6' + placePhoneNumber + '<br><br></div></div>');
                         } else if (placeRating <= 0 && placePhoto != null) {
-                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br>' + '<br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br>' + '<br>Telephone Number: +65 6' + placePhoneNumber + '<br><br></div></div>');
                         } else if (placeRating > 0 && placePhoto == null) {
-                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: +65 6' + placePhoneNumber + '<br><br></div></div>');
                         } else {
-                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br>' + '<br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br>' + '<br>Telephone Number: +65 6' + placePhoneNumber + '<br><br></div></div>');
                         }
 
                         infoWindow.open(map, this);
                     });
                 }
+
 
                 /* DOM (drag/drop) functions */
 
@@ -380,6 +390,10 @@
 
                 function hidePanel(e) {
                     document.getElementById('drop-container').style.display = 'none';
+                }
+
+                function mynumbr(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
 
                 function handleDrop(e) {
