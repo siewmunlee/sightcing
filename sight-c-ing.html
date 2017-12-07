@@ -15,18 +15,20 @@
 
 <body onload="setup()">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
     <script src="togeojson.js"></script>
 
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
         <a class="navbar-brand font-weight-bold mx-auto" href="#" style="font-size:2.25rem">Sight-C-ing</a>
         <div>
-            <img src="login/ico/user.png" id="user" style="width:60px;height:60px;">
+            <img src="login/ico/user.png" id="user" class="user-icon">
             <div id="userprofile" class="dropdown-content">
                 <div class="dropdown-profile ">
-                    <img src="login/img/user.png" id="user" style="width:60px;height:60px;vertical-align:top;">
+                    <img src="login/img/user.png" id="user" class="user-image">
                     <div class="dropdown-profiledetails">
                         <div class="dropdown-profilename">
                             John Low
@@ -68,7 +70,9 @@
 
                     <div id="distanceMatrix" hidden="hidden">
                         <font class="card-text" style="font-size:22px">
-                            <img class="w-15" src="https://cdn0.iconfinder.com/data/icons/thin-navigation/24/thin-0545_map_travel_distance_directions-512.png" alt="logo"><b> Distance:</b>
+                            <img class="w-15" src="https://cdn0.iconfinder.com/data/icons/thin-navigation/24/thin-0545_map_travel_distance_directions-512.png"
+                                alt="logo">
+                            <b> Distance:</b>
                         </font>
                         <font class="card-text" id="distanceValueInKm" style="font-size:22px">
 
@@ -97,9 +101,9 @@
                         <div class="card">
                             <div class="card-header" role="tab" id="headingTwo">
                                 <h5 class="mb-0">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                            Use Instructions
-                                        </a>
+                                    <a data-toggle="collapse" id="use-instructions" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                        Use Instructions
+                                    </a>
                                 </h5>
                             </div>
 
@@ -109,23 +113,18 @@
                                         1. Authorize Sight-C-ing to view your current location <strong>(preferred)</strong> to identify your current location.
                                     </p>
                                     <p class="card-text">
-                                        2. Select the
-                                        <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' /> button above to upload.
-                                    </p>
-                                    <p class="card-text">3. Subsequently, you can also drag and drop files ending with a
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> extension directly into the map.
-                                    </p>
-                                    <p class="card-text">
-                                        4. Only
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> files are allowed to upload.
+                                        2. Drag and drop your
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">GPX</a>
+                                        routes or upload them above!
                                     </p>
                                     <p>
                                         <p class="card-text" style="position: justify">
-                                            5. The route will then be reflect automatically onto the map.
+                                            3. View and explore landmarks near your route!
                                         </p>
                                         <p class="card-text" style="text-decoration: underline">Legend</p>
                                         <p class="card-text">
-                                            <img class="w-15" src="https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w60" alt="logo"> - Current Location
+                                            <img class="legend-icon" src="https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w60"
+                                                alt="logo"> - Current Location
                                         </p>
                                         <p class="card-text">
                                             <img class="w-15" src="MapIcons/landmark.png" alt="logo"> - Identified Landmarks
@@ -134,7 +133,7 @@
                                             <img class="w-15" src="MapIcons/start.png" alt="logo"> - Start Point
                                         </p>
                                         <p class="card-text">
-                                            <img class="w-15" src="MapIcons/stop.png" alt="logo"> - End Point
+                                            <img class="legend-icon" src="MapIcons/stop.png" alt="logo"> - End Point
                                         </p>
                                         <p class="card-text">We hope you enjoy using
                                             <b>Sight-C-ing</b>!</p>
@@ -155,17 +154,13 @@
                     $("#userprofile").addClass("sda");
                 });
 
-                window.onclick = function(event) {
-                        if (!event.target.matches('.dropbtn')) {
-
-                            var dropdowns = document.getElementsByClassName("dropdown-content");
-                            var i;
-                            for (i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                if (openDropdown.classList.contains('nigga')) {
-                                    openDropdown.classList.remove('nigga');
-                                }
-                            }
+                window.onclick = function (event) {
+                    if (!event.target.matches('.user-icon')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            openDropdown.classList.remove("sda");
                         }
                     }
                     /* Map functions */
@@ -189,7 +184,7 @@
 
                     // Try HTML5 geolocation.
                     if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
                             var pos = {
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude
@@ -200,7 +195,7 @@
                                 title: 'Location lor',
                                 icon: "https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w45"
                             });
-                        }, function() {
+                        }, function () {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
                     } else {
@@ -286,7 +281,7 @@
                  */
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
-                    map.data.forEach(function(feature) {
+                    map.data.forEach(function (feature) {
                         processPoints(feature.getGeometry(), bounds.extend, bounds);
                     });
                     map.fitBounds(bounds);
@@ -306,7 +301,7 @@
                     } else if (geometry instanceof google.maps.Data.Point) {
                         callback.call(thisArg, geometry.get());
                     } else {
-                        geometry.getArray().forEach(function(g) {
+                        geometry.getArray().forEach(function (g) {
                             processPoints(g, callback, thisArg);
                         });
                     }
@@ -336,7 +331,7 @@
                     });
 
                     // landmark details
-                    google.maps.event.addListener(marker, 'click', function() {
+                    google.maps.event.addListener(marker, 'click', function () {
                         var placeName = place.name;
                         var placeID = place.place_id;
                         var placePhoneNumber = place.formatted_phone;
@@ -407,11 +402,11 @@
                         // grab the file data from each file
                         for (var i = 0, file; file = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(file);
@@ -420,6 +415,10 @@
                             $('#gpxtext').css({
                                 'background-color': '#65ca65'
                             });
+                            var open = document.getElementById('collapseTwo');
+                            if (open.classList.contains('show')) {
+                                document.getElementById('use-instructions').click();
+                            }
                         }
                     } else {
                         // process non-file (e.g. text or html) content being dropped
@@ -459,11 +458,11 @@
 
                         for (var i = 0, f; f = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(f);
@@ -472,6 +471,11 @@
                             $('#gpxtext').css({
                                 'background-color': '#65ca65'
                             });
+                            var open = document.getElementById('collapseTwo');
+                            if (open.classList.contains('show')) {
+                                document.getElementById('use-instructions').click();
+                            }
+                            
                         }
                     }
 
@@ -484,7 +488,7 @@
                     //readFile();
                 }
 
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
