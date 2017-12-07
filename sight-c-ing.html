@@ -13,8 +13,7 @@
 </head>
 
 <body onload="setup()">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
@@ -82,7 +81,7 @@
             <script>
                 /* Map functions */
 
-                var map, infoWindow, marker;
+                var map, infoWindow, marker, service;
 
                 var icons = {
                     currentLoc: {
@@ -136,8 +135,26 @@
                 }
 
                 function loadGeoJsonString(geoString) {
+                    //debugger;
                     var geojson = JSON.parse(geoString);
                     map.data.addGeoJson(geojson);
+
+                    var features = geojson.features;
+                    var feature = geojson.features[0];
+                    var gg = feature.geometry;
+                    var coord = gg.coordinates[0];
+                    var loc = { lat: coord[0], lng: coord[1] };
+
+                    var service = new google.maps.places.PlacesService(map);
+                    service.nearbySearch({
+                        location: loc,
+                        radius: 500
+                    }, test);
+
+
+                    console.log(gg);
+                    console.log(coord);
+                    console.log(loc);
                     zoom(map);
                 }
 
@@ -148,7 +165,7 @@
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
                     map.data.forEach(function (feature) {
-                        processPoints(feature.getGeometry(), bounds.extend, bounds);
+                        processPoints(feature.getGeometry(), bounds.extend, bounds, map);
                     });
                     map.fitBounds(bounds);
                 }
@@ -161,7 +178,8 @@
                  * @param {Object} thisArg The value of 'this' as provided to 'callback' (e.g.
                  *     myArray)
                  */
-                function processPoints(geometry, callback, thisArg) {
+                function processPoints(geometry, callback, thisArg, map) {
+                    //debugger;                   
                     if (geometry instanceof google.maps.LatLng) {
                         callback.call(thisArg, geometry);
                     } else if (geometry instanceof google.maps.Data.Point) {
@@ -171,6 +189,29 @@
                             processPoints(g, callback, thisArg);
                         });
                     }
+                }
+
+                function test(results, status) {
+                    //debugger;
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        for (var i = 0; i < results.length; i++) {
+                            createMarker(results[i]);
+                        }
+                    }
+                }
+
+                function createMarker(place) {
+                    debugger;
+                    var placeLoc = place.geometry.location;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: placeLoc0
+                      });
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(place.name);
+                        infowindow.open(map, this);
+                    });
                 }
 
 
@@ -211,7 +252,6 @@
                 }
 
                 function readFile(e) {
-                    debugger;
                     var files = e.dataTransfer.files;
                     if (files.length) {
                         // process file(s) being dropped
@@ -265,10 +305,8 @@
                         var files = evt.target.files; // FileList object
 
                         for (var i = 0, f; f = files[i]; i++) {
-                            debugger;
                             var reader = new FileReader();
                             reader.onload = function (e) {
-                                debugger;
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
@@ -285,34 +323,13 @@
                     document.getElementById('myFile').addEventListener('change', handleFileSelect, false);
                 }
 
-                // function callGooglePlaces(results, status) {
-                //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-                //         for (var i = 0; i < results.length; i++) {
-                //             createNearbyLandmarksMarker(results[i]);
-                //         }
-                //     }
-                // }
-
-
-                // function createNearbyLandmarksMarker(place) {
-                //     var placeLoc = place.geometry.location;
-                //     var marker = new google.maps.Marker({
-                //         map: map,
-                //         position: place.geometry.location
-                //     });
-
-                //     google.maps.event.addListener(marker, 'click', function() {
-                //         infowindow.setContent(place.name);
-                //         infowindow.open(map, this);
-                //     });
-                // }
-
                 function initialize() {
                     initMap();
                     initEvents();
+                    //readFile();
                 }
             </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&callback=initialize"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=initialize"></script>
             <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=readFile" async defer></script>-->
 
             <script>
