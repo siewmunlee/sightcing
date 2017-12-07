@@ -15,8 +15,10 @@
 
 <body onload="setup()">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
     <script src="togeojson.js"></script>
 
     <!-- Header Navigation Bar -->
@@ -68,7 +70,8 @@
 
                     <div id="distanceMatrix" hidden="hidden">
                         <font class="card-text" style="font-size:22px">
-                            <img class="w-15" src="https://cdn0.iconfinder.com/data/icons/thin-navigation/24/thin-0545_map_travel_distance_directions-512.png" alt="logo">
+                            <img class="w-15" src="https://cdn0.iconfinder.com/data/icons/thin-navigation/24/thin-0545_map_travel_distance_directions-512.png"
+                                alt="logo">
                             <b> Distance:</b>
                         </font>
                         <font class="card-text" id="distanceValueInKm" style="font-size:22px">
@@ -78,20 +81,7 @@
 
                     <p></p>
 
-                    <div id="landmarksTable" hidden="hidden">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <td><strong>Landmarks found within vicinity:</strong></td>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>testing value lol</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
+                    <div id="landmarksTable" hidden="hidden"></div>
 
                     <div id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -107,7 +97,8 @@
                             <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="card-block">
                                     <p class="card-text">
-                                        1. Authorize Sight-C-ing to view your current location <strong>(preferred)</strong> to identify your current location.
+                                        1. Authorize Sight-C-ing to view your current location
+                                        <strong>(preferred)</strong> to identify your current location.
                                     </p>
                                     <p class="card-text">
                                         2. Drag and drop your
@@ -119,13 +110,14 @@
                                         </p>
                                         <p class="card-text" style="text-decoration: underline">Legend</p>
                                         <p class="card-text">
-                                            <img class="legend-icon" src="https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w60" alt="logo"> - Current Location
+                                            <img class="legend-icon" src="https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w60"
+                                                alt="logo"> - Current Location
                                         </p>
                                         <p class="card-text">
-                                            <img class="w-15" src="MapIcons/landmark.png" alt="logo"> - Identified Landmarks
+                                            <img class="legend-icon" src="MapIcons/landmark.png" alt="logo"> - Identified Landmarks
                                         </p>
                                         <p class="card-text">
-                                            <img class="w-15" src="MapIcons/start.png" alt="logo"> - Start Point
+                                            <img class="legend-icon" src="MapIcons/start.png" alt="logo"> - Start Point
                                         </p>
                                         <p class="card-text">
                                             <img class="legend-icon" src="MapIcons/stop.png" alt="logo"> - End Point
@@ -145,21 +137,21 @@
                 <div id="drop-silhouette"></div>
             </div>
             <script>
-                $("#user").click(function() {
+                $("#user").click(function () {
                     $("#userprofile").addClass("sda");
                 });
 
-                window.onclick = function(event) {
-                        if (!event.target.matches('.user-icon')) {
-                            var dropdowns = document.getElementsByClassName("dropdown-content");
-                            var i;
-                            for (i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                openDropdown.classList.remove("sda");
-                            }
+                window.onclick = function (event) {
+                    if (!event.target.matches('.user-icon')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            openDropdown.classList.remove("sda");
                         }
                     }
-                    /* Map functions */
+                }
+                /* Map functions */
 
                 var map, infoWindow, marker, service, coords;
 
@@ -180,7 +172,7 @@
 
                     // Try HTML5 geolocation.
                     if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
                             var pos = {
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude
@@ -191,7 +183,7 @@
                                 title: 'Location lor',
                                 icon: "https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w45"
                             });
-                        }, function() {
+                        }, function () {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
                     } else {
@@ -277,7 +269,7 @@
                  */
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
-                    map.data.forEach(function(feature) {
+                    map.data.forEach(function (feature) {
                         processPoints(feature.getGeometry(), bounds.extend, bounds);
                     });
                     map.fitBounds(bounds);
@@ -297,14 +289,13 @@
                     } else if (geometry instanceof google.maps.Data.Point) {
                         callback.call(thisArg, geometry.get());
                     } else {
-                        geometry.getArray().forEach(function(g) {
+                        geometry.getArray().forEach(function (g) {
                             processPoints(g, callback, thisArg);
                         });
                     }
                 }
 
                 function test(results, status) {
-                    debugger;
                     if (status === google.maps.places.PlacesServiceStatus.OK) {
                         for (var i = 0; i < results.length; i++) {
                             createMarker(results[i]);
@@ -315,8 +306,6 @@
                 }
 
                 function createMarker(place) {
-                    debugger;
-
                     // populate landmarks
                     var placeLoc = place.geometry.location;
                     var marker = new google.maps.Marker({
@@ -326,8 +315,27 @@
                         icon: "MapIcons/landmark.png"
                     });
 
+                    debugger;
+                    var placeName = place.name;
+                    var placeRating = place.rating;
+                    if (place.photos != null) {
+                        var placePhoto = place.photos[0].getUrl({
+                            'maxWidth': 120
+                        });
+                    }
+                    if (placeRating > 0 && placePhoto != null) {
+                        $("#landmarksTable").append('<div class="landmark"><img class="landmark-image" src="' + placePhoto + '"><div class="landmark-details"><div class="dropdown-profilename">' + place.name + '</div><div>' + place.vicinity + '</div><div>Rating: <strong>' + placeRating + '/5.0</strong></div><div>Telephone Number: ' + place.placePhoneNumber + '</div></div></div>');
+                    } else if (placeRating <= 0 && placePhoto != null) {
+                        $("#landmarksTable").append("test2");
+                    } else if (placeRating > 0 && placePhoto == null) {
+                        $("#landmarksTable").append("test3");
+                    } else {
+                        $("#landmarksTable").append('<div class="landmark"><img class="landmark-image" src="login/img/No_Image_Available.jpg"><div class="landmark-details"><div class="dropdown-profilename">' + place.name + '</div><div>' + place.vicinity + '</div><div>Telephone Number: ' + place.placePhoneNumber + '</div></div></div>');
+                    }
+
+
                     // landmark details
-                    google.maps.event.addListener(marker, 'click', function() {
+                    google.maps.event.addListener(marker, 'click', function () {
                         var placeName = place.name;
                         var placeID = place.place_id;
                         var placePhoneNumber = place.formatted_phone;
@@ -339,8 +347,7 @@
                         var placeVicinity = place.vicinity;
                         var placeRating = place.rating;
 
-                        // i want a insert a new row here
-
+                        // i want a insert a new row here                     
                         if (placeRating > 0 && placePhoto != null) {
                             infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
                         } else if (placeRating <= 0 && placePhoto != null) {
@@ -398,11 +405,11 @@
                         // grab the file data from each file
                         for (var i = 0, file; file = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(file);
@@ -424,20 +431,6 @@
                             loadGeoJsonString(plainText);
                         }
                     }
-
-                    // infoWindow = new google.maps.InfoWindow;
-
-                    // var lctn = {
-                    //     lat: map.getCenter().lat(),
-                    //     lng: map.getCenter().lng()
-                    // };
-
-                    // var service = new google.maps.places.PlacesService(map);
-                    // service.nearbySearch({
-                    //     location: lctn,
-                    //     radius: 2000,
-                    //     type: ['store']
-                    // }, callGooglePlaces);
                 }
 
                 function setup() {
@@ -454,11 +447,11 @@
 
                         for (var i = 0, f; f = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(f);
@@ -484,7 +477,7 @@
                     //readFile();
                 }
 
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
