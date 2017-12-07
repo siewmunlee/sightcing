@@ -150,12 +150,6 @@
                                 title: 'Location lor',
                                 icon: "https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w45"
                             });
-
-
-                            // infoWindow.setPosition(pos);
-                            // infoWindow.setContent('Current Location');
-                            // infoWindow.open(map);
-                            //map.setCenter(pos, 16);
                         }, function() {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
@@ -178,7 +172,7 @@
                     map.data.addGeoJson(geojson);
                     map.data.setStyle({
                         fillColor: "yellow",
-                        strokeWeight: 10
+                        strokeWeight: 6
                     });
 
                     document.getElementById('distanceMatrix').hidden = "";
@@ -280,18 +274,36 @@
 
                 function createMarker(place) {
                     debugger;
+
+                    // populate landmarks
                     var placeLoc = place.geometry.location;
                     var marker = new google.maps.Marker({
                         map: map,
-                        position: placeLoc
+                        position: placeLoc,
+                        clickable: true,
+                        icon: "MapIcons/landmark.png"
                     });
 
+                    // landmark details
                     google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent(place.name);
-                        infowindow.open(map, this);
+                        var placeName = place.name;
+                        var placeID = place.place_id;
+                        var placePhoneNumber = place.formatted_phone;
+                        var placePhoto = place.photos[0].getUrl({
+                            'maxWidth': 200
+                        })
+                        var placeVicinity = place.vicinity;
+                        var placeRating = place.rating;
+                        var placeURL = place.url;
+                        if (placeRating > 0) {
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placeURL + '<br><br></div></div>');
+                        } else {
+                            infoWindow.setContent('<font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><img src="' + placePhoto + '">');
+                        }
+
+                        infoWindow.open(map, this);
                     });
                 }
-
 
                 /* DOM (drag/drop) functions */
 
@@ -417,8 +429,8 @@
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=initialize"></script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=geometry&callback=initialize"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm6nnxXBM7RB7u9vNH82N3vLexfNkux28&libraries=places&callback=initialize"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm6nnxXBM7RB7u9vNH82N3vLexfNkux28&libraries=geometry&callback=initialize"></script>
         </div>
     </div>
 </body>
