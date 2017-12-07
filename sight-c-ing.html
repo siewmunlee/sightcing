@@ -13,11 +13,17 @@
 </head>
 
 <body onload="setup()">
+<<<<<<< .merge_file_a18236
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
+=======
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+>>>>>>> .merge_file_a07352
     <script src="togeojson.js"></script>
 
     <!-- Header Navigation Bar -->
@@ -49,16 +55,23 @@
 
                             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="card-block">
-                                    <p class="card-text">1. Select the
-                                        <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' /> button above.
+                                    <p class="card-text">
+                                        1. Authorize Sight-C-ing to view your current location (preferred) to identify your current location.
                                     </p>
                                     <p class="card-text">
-                                        2. Only
+                                        2. Select the
+                                        <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' /> button above to upload.
+                                    </p>
+                                    <p class="card-text">3. Subsequently, you can also drag and drop files ending with a <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> extension directly
+                                        into the map.
+                                    </p>
+                                    <p class="card-text">
+                                        4. Only
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> files are allowed to upload.
                                     </p>
                                     <p>
                                         <p class="card-text" style="position: justify">
-                                            3. The route will then be reflect automatically onto the map.
+                                            5. The route will then be reflect automatically onto the map.
                                         </p>
                                         <p class="card-text" style="text-decoration: underline">Legend</p>
                                         <p class="card-text">
@@ -117,7 +130,7 @@
                             // infoWindow.setContent('Current Location');
                             // infoWindow.open(map);
                             //map.setCenter(pos, 16);
-                        }, function () {
+                        }, function() {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
                     } else {
@@ -164,8 +177,13 @@
                  */
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
+<<<<<<< .merge_file_a18236
                     map.data.forEach(function (feature) {
                         processPoints(feature.getGeometry(), bounds.extend, bounds, map);
+=======
+                    map.data.forEach(function(feature) {
+                        processPoints(feature.getGeometry(), bounds.extend, bounds);
+>>>>>>> .merge_file_a07352
                     });
                     map.fitBounds(bounds);
                 }
@@ -185,7 +203,7 @@
                     } else if (geometry instanceof google.maps.Data.Point) {
                         callback.call(thisArg, geometry.get());
                     } else {
-                        geometry.getArray().forEach(function (g) {
+                        geometry.getArray().forEach(function(g) {
                             processPoints(g, callback, thisArg);
                         });
                     }
@@ -258,11 +276,11 @@
                         // grab the file data from each file
                         for (var i = 0, file; file = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function (e) {
+                            reader.onload = function(e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function (e) {
+                            reader.onerror = function(e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(file);
@@ -306,17 +324,24 @@
 
                         for (var i = 0, f; f = files[i]; i++) {
                             var reader = new FileReader();
+<<<<<<< .merge_file_a18236
                             reader.onload = function (e) {
+=======
+                            reader.onload = function(e) {
+                                debugger;
+>>>>>>> .merge_file_a07352
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function (e) {
+                            reader.onerror = function(e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(f);
                             document.getElementById('gpxtext').placeholder = f.name;
                             $('#gpxtext').addClass('whiteplaceholder');
-                            $('#gpxtext').css({ 'background-color': '#65ca65' });
+                            $('#gpxtext').css({
+                                'background-color': '#65ca65'
+                            });
                         }
                     }
 
@@ -333,7 +358,7 @@
             <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=readFile" async defer></script>-->
 
             <script>
-                $(document).ready(function () {
+                $(document).ready(function() {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
