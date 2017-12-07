@@ -22,6 +22,34 @@
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
         <a class="navbar-brand font-weight-bold mx-auto" href="#" style="font-size:2.25rem">Sight-C-ing</a>
+        <div>
+            <img src="login/ico/user.png" id="user" style="width:60px;height:60px;">
+            <div id="userprofile" class="dropdown-content">
+                <div class="dropdown-profile ">
+                    <img src="login/img/user.png" id="user" style="width:60px;height:60px;vertical-align:top;">
+                    <div class="dropdown-profiledetails">
+                        <div class="dropdown-profilename">
+                            John Low
+                        </div>
+                        <div class="dropdown-profileemail">
+                            johnlow@gmail.com
+                        </div>
+                        <div>
+                            Last uploaded route: Route-1.gpx
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-buttons">
+                    <div class="profile-b">
+                        <a href="#" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                    <div class="profile-b">
+                        <a href="index.html" class="btn btn-primary">Log out</a>
+                    </div>
+                </div>
+            </div>
+            <!--<button id="close-image"><img src="login/ico/user.png" id="user" style="width:60px;height:60px;"></button>-->
+        </div>
     </nav>
 
     <!-- Side Navigation Bar -->
@@ -118,6 +146,23 @@
                 <div id="drop-silhouette"></div>
             </div>
             <script>
+                $("#user").click(function () {
+                    $("#userprofile").addClass("sda");
+                });
+
+                window.onclick = function (event) {
+                    if (!event.target.matches('.dropbtn')) {
+
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('nigga')) {
+                                openDropdown.classList.remove('nigga');
+                            }
+                        }
+                    }
+                }
                 /* Map functions */
 
                 var map, infoWindow, marker, service, coords;

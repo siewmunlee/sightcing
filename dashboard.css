@@ -115,6 +115,91 @@ h1 {
 }
 
 
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+ background: #fff;
+ border: 1px solid #ccc;
+ border-color: rgba(0,0,0,.2);
+ box-shadow: 0 2px 10px rgba(0,0,0,.2);
+ position: absolute;
+ right: 0;
+ border-radius: 2px;
+margin-right:10px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;    
+}
+
+.sda {
+ display: block;
+}
+
+.dropdown-profile {
+	margin: 15px;
+}
+
+.dropdown-profile img{
+	margin-right: 10px;
+}
+
+
+.dropdown-profiledetails {
+	display: inline-block;
+}
+
+.dropdown-profilename {
+    font-weight: bold;
+    margin: -4px 0 1px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	font-size: medium;
+}
+
+.dropdown-profileemail {
+color: #666;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	font-size: small;
+}
+
+.profile-buttons {
+background: #f5f5f5;
+    border-top: 1px solid #ccc;
+    border-color: rgba(0,0,0,.2);
+    padding: 10px 0;
+    width: 100%;
+    display: table;
+}
+
+.profile-b {
+    display: inline-block;
+    line-height: 28px;
+    padding: 0 12px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.profile-buttons>div:first-child {
+	text-align: left;
+}
+
+.profile-buttons>div {
+    display: table-cell;
+    text-align: right;
+}
+
+.profile-buttons>div>a {
+    color: #fff;
+}
+
+
 /* InfoWindow attributes */
 
 #infowindow {
