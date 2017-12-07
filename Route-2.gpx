@@ -4,23 +4,7 @@
         <name><![CDATA[Untitled map]]></name>
         <desc><![CDATA[]]></desc>
                 </metadata>
-
-                                                                                
-                <wpt lat="1.284001" lon="103.851518">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Raffles Place]]></name>
-                    <cmt><![CDATA[Waypoint no: 1]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 1]]></desc>
-                </wpt>
-                                                                                                                            
-                <wpt lat="1.293148" lon="103.85192">
-                                                            <ele>0</ele>
-                    <name><![CDATA[150 North Bridge Rd, Singapore 179100]]></name>
-                    <cmt><![CDATA[Waypoint no: 2]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 2]]></desc>
-                </wpt>
-                                                            
-                                                                                                    
+                                                     
                 <trk>
                     <name><![CDATA[Directions from Raffles Place to 150 North Bridge Rd, Singapore 179100_Directions from Raffles Place to 150 North Bridge Rd, Singapore 179100]]></name>
                     <desc><![CDATA[This is track no: 1]]></desc>

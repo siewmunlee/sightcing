@@ -4,23 +4,7 @@
         <name><![CDATA[Untitled map]]></name>
         <desc><![CDATA[]]></desc>
                 </metadata>
-
-                                                                                
-                <wpt lat="1.276235" lon="103.855331">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Marina Bay MRT Station]]></name>
-                    <cmt><![CDATA[Waypoint no: 1]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 1]]></desc>
-                </wpt>
-                                                                                                                            
-                <wpt lat="1.282254" lon="103.84844">
-                                                            <ele>0</ele>
-                    <name><![CDATA[8 Cross St, Singapore 048424]]></name>
-                    <cmt><![CDATA[Waypoint no: 2]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 2]]></desc>
-                </wpt>
-                                                            
-                                                                                                    
+                                           
                 <trk>
                     <name><![CDATA[Directions from Marina Bay MRT Station to 8 Cross St, Singapore 048424_Directions from Marina Bay MRT Station to 8 Cross St, Singapore 048424]]></name>
                     <desc><![CDATA[This is track no: 1]]></desc>

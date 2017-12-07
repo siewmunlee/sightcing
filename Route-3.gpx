@@ -3,23 +3,7 @@
     <metadata>
         <name><![CDATA[Untitled map]]></name>
         <desc><![CDATA[]]></desc>
-                </metadata>
-
-                                                                                
-                <wpt lat="1.292193" lon="103.84479">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Fort Canning Station]]></name>
-                    <cmt><![CDATA[Waypoint no: 1]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 1]]></desc>
-                </wpt>
-                                                                                                                            
-                <wpt lat="1.299242" lon="103.845268">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Dhoby Ghaut Stn]]></name>
-                    <cmt><![CDATA[Waypoint no: 2]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 2]]></desc>
-                </wpt>
-                                                            
+                </metadata>         
                                                                                                     
                 <trk>
                     <name><![CDATA[Directions from Fort Canning Station to Dhoby Ghaut Stn_Directions from Fort Canning Station to Dhoby Ghaut Stn]]></name>

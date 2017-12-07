@@ -3,23 +3,7 @@
     <metadata>
         <name><![CDATA[Untitled map]]></name>
         <desc><![CDATA[]]></desc>
-                </metadata>
-
-                                                                                
-                <wpt lat="1.293134" lon="103.851942">
-                                                            <ele>0</ele>
-                    <name><![CDATA[City Hall MRT]]></name>
-                    <cmt><![CDATA[Waypoint no: 1]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 1]]></desc>
-                </wpt>
-                                                                                                                            
-                <wpt lat="1.284001" lon="103.851518">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Raffles Place MRT]]></name>
-                    <cmt><![CDATA[Waypoint no: 2]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 2]]></desc>
-                </wpt>
-                                                            
+                </metadata>               
                                                                                                     
                 <trk>
                     <name><![CDATA[Directions from City Hall MRT to Raffles Place MRT_Directions from City Hall MRT to Raffles Place MRT]]></name>

@@ -3,23 +3,7 @@
     <metadata>
         <name><![CDATA[Untitled map]]></name>
         <desc><![CDATA[]]></desc>
-                </metadata>
-
-                                                                                
-                <wpt lat="1.276235" lon="103.855331">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Marina Bay MRT Station]]></name>
-                    <cmt><![CDATA[Waypoint no: 1]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 1]]></desc>
-                </wpt>
-                                                                                                                            
-                <wpt lat="1.282316" lon="103.848333">
-                                                            <ele>0</ele>
-                    <name><![CDATA[Telok ayer mrt]]></name>
-                    <cmt><![CDATA[Waypoint no: 2]]></cmt>
-                    <desc><![CDATA[This is waypoint no: 2]]></desc>
-                </wpt>
-                                                            
+                </metadata>                
                                                                                                     
                 <trk>
                     <name><![CDATA[Directions from Marina Bay MRT Station to Telok ayer mrt_Directions from Marina Bay MRT Station to Telok ayer mrt]]></name>

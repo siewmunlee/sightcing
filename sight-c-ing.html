@@ -75,22 +75,24 @@
                         </font> km
                     </div>
 
+                    <p></p>
+
+                    <div id="landmarksTable" hidden="hidden">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td><strong>Landmarks found within vicinity:</strong></td>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>testing value lol</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        for future use
-                                    </a>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="card-block">
-
-                            </div>
-                        </div>
-
 
                         <div class="card">
                             <div class="card-header" role="tab" id="headingTwo">
@@ -104,7 +106,7 @@
                             <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="card-block">
                                     <p class="card-text">
-                                        1. Authorize Sight-C-ing to view your current location (preferred) to identify your current location.
+                                        1. Authorize Sight-C-ing to view your current location <strong>(preferred)</strong> to identify your current location.
                                     </p>
                                     <p class="card-text">
                                         2. Select the
@@ -124,6 +126,9 @@
                                         <p class="card-text" style="text-decoration: underline">Legend</p>
                                         <p class="card-text">
                                             <img class="w-15" src="https://lh6.ggpht.com/IgJ4d_Edni5_YOTSw7RrUxViTPN8rxDyRV4YAgOKYGT4pLqUVlAh9Ncx70KPqy74Ew=w60" alt="logo"> - Current Location
+                                        </p>
+                                        <p class="card-text">
+                                            <img class="w-15" src="MapIcons/landmark.png" alt="logo"> - Identified Landmarks
                                         </p>
                                         <p class="card-text">
                                             <img class="w-15" src="MapIcons/start.png" alt="logo"> - Start Point
@@ -146,24 +151,24 @@
                 <div id="drop-silhouette"></div>
             </div>
             <script>
-                $("#user").click(function () {
+                $("#user").click(function() {
                     $("#userprofile").addClass("sda");
                 });
 
-                window.onclick = function (event) {
-                    if (!event.target.matches('.dropbtn')) {
+                window.onclick = function(event) {
+                        if (!event.target.matches('.dropbtn')) {
 
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('nigga')) {
-                                openDropdown.classList.remove('nigga');
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            var i;
+                            for (i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (openDropdown.classList.contains('nigga')) {
+                                    openDropdown.classList.remove('nigga');
+                                }
                             }
                         }
                     }
-                }
-                /* Map functions */
+                    /* Map functions */
 
                 var map, infoWindow, marker, service, coords;
 
@@ -216,11 +221,11 @@
                     var geojson = JSON.parse(geoString);
                     map.data.addGeoJson(geojson);
                     map.data.setStyle({
-                        fillColor: "yellow",
+                        fillColor: "green",
                         strokeWeight: 6
                     });
 
-                    document.getElementById('distanceMatrix').hidden = "";
+                    document.getElementById('landmarksTable').hidden = "";
 
                     // landmark search
                     var features = geojson.features;
@@ -234,7 +239,7 @@
                         var service = new google.maps.places.PlacesService(map);
                         service.nearbySearch({
                             location: loc,
-                            radius: 50,
+                            radius: 60,
                             type: ["restaurant"]
                         }, test);
                     }
@@ -249,6 +254,7 @@
 
                     zoom(map);
                     if (coords != null) {
+                        document.getElementById('distanceMatrix').hidden = "";
                         var totalDistance = Math.round((google.maps.geometry.spherical.computeLength(coords) / 1000) * 100) / 100;
                         document.getElementById("distanceValueInKm").innerHTML = totalDistance;
                     }
@@ -334,16 +340,24 @@
                         var placeName = place.name;
                         var placeID = place.place_id;
                         var placePhoneNumber = place.formatted_phone;
-                        var placePhoto = place.photos[0].getUrl({
-                            'maxWidth': 200
-                        })
+                        if (place.photos != null) {
+                            var placePhoto = place.photos[0].getUrl({
+                                'maxWidth': 200
+                            });
+                        }
                         var placeVicinity = place.vicinity;
                         var placeRating = place.rating;
-                        var placeURL = place.url;
-                        if (placeRating > 0) {
-                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placeURL + '<br><br></div></div>');
+
+                        // i want a insert a new row here
+
+                        if (placeRating > 0 && placePhoto != null) {
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
+                        } else if (placeRating <= 0 && placePhoto != null) {
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"><img src="' + placePhoto + '"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br>' + '<br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
+                        } else if (placeRating > 0 && placePhoto == null) {
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><br>Rating: <strong>' + placeRating + '/5.0</strong><br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
                         } else {
-                            infoWindow.setContent('<font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br><img src="' + placePhoto + '">');
+                            infoWindow.setContent('<div id="infowindow"><div id="iw-content"></div><div id="iw-sidebar"><font style="font-size:22px"><strong>' + placeName + '</font></strong><br><font style="font-size:18px">' + placeVicinity + '</font><br>' + '<br>Telephone Number: ' + placePhoneNumber + '<br><br></div></div>');
                         }
 
                         infoWindow.open(map, this);
