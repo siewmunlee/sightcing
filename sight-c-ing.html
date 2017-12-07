@@ -23,10 +23,10 @@
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary">
         <a class="navbar-brand font-weight-bold mx-auto" href="#" style="font-size:2.25rem">Sight-C-ing</a>
         <div>
-            <img src="login/ico/user.png" id="user" style="width:60px;height:60px;">
+            <img src="login/ico/user.png" id="user" class="user-icon">
             <div id="userprofile" class="dropdown-content">
                 <div class="dropdown-profile ">
-                    <img src="login/img/user.png" id="user" style="width:60px;height:60px;vertical-align:top;">
+                    <img src="login/img/user.png" id="user" class="user-image">
                     <div class="dropdown-profiledetails">
                         <div class="dropdown-profilename">
                             John Low
@@ -151,15 +151,13 @@
                 });
 
                 window.onclick = function (event) {
-                    if (!event.target.matches('.dropbtn')) {
-
+                    if (!event.target.matches('.user-icon')) {
+                        debugger;
                         var dropdowns = document.getElementsByClassName("dropdown-content");
                         var i;
                         for (i = 0; i < dropdowns.length; i++) {
                             var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('nigga')) {
-                                openDropdown.classList.remove('nigga');
-                            }
+                            openDropdown.classList.remove("sda");                        
                         }
                     }
                 }
