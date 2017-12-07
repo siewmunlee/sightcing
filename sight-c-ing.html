@@ -56,8 +56,9 @@
                                         2. Select the
                                         <input class="btn btn-primary" id='uploadbtn' type='button' value='Upload' /> button above to upload.
                                     </p>
-                                    <p class="card-text">3. Subsequently, you can also drag and drop files ending with a <a href="#" data-toggle="tooltip" data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> extension directly
-                                        into the map.
+                                    <p class="card-text">3. Subsequently, you can also drag and drop files ending with a
+                                        <a href="#" data-toggle="tooltip"
+                                            data-placement="top" title="Can be generated using major GPS trackers or via Google Maps">.GPX</a> extension directly into the map.
                                     </p>
                                     <p class="card-text">
                                         4. Only
@@ -124,7 +125,7 @@
                             // infoWindow.setContent('Current Location');
                             // infoWindow.open(map);
                             //map.setCenter(pos, 16);
-                        }, function() {
+                        }, function () {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
                     } else {
@@ -142,26 +143,25 @@
                 }
 
                 function loadGeoJsonString(geoString) {
-                    //debugger;
                     var geojson = JSON.parse(geoString);
                     map.data.addGeoJson(geojson);
 
+                    // landmark search
                     var features = geojson.features;
                     var feature = geojson.features[0];
                     var gg = feature.geometry;
-                    var coord = gg.coordinates[0];
-                    var loc = { lat: coord[0], lng: coord[1] };
 
-                    var service = new google.maps.places.PlacesService(map);
-                    service.nearbySearch({
-                        location: loc,
-                        radius: 500
-                    }, test);
+                    for (var i = 0; i < gg.coordinates.length; i += 20) {
+                        var coord = gg.coordinates[i];
 
+                        var loc = new google.maps.LatLng(coord[1], coord[0]);
+                        var service = new google.maps.places.PlacesService(map);
+                        service.nearbySearch({
+                            location: loc,
+                            radius: 50
+                        }, test);
+                    }
 
-                    console.log(gg);
-                    console.log(coord);
-                    console.log(loc);
                     zoom(map);
                 }
 
@@ -171,7 +171,7 @@
                  */
                 function zoom(map) {
                     var bounds = new google.maps.LatLngBounds();
-                    map.data.forEach(function(feature) {
+                    map.data.forEach(function (feature) {
                         processPoints(feature.getGeometry(), bounds.extend, bounds);
                     });
                     map.fitBounds(bounds);
@@ -186,24 +186,26 @@
                  *     myArray)
                  */
                 function processPoints(geometry, callback, thisArg, map) {
-                    //debugger;                   
                     if (geometry instanceof google.maps.LatLng) {
                         callback.call(thisArg, geometry);
                     } else if (geometry instanceof google.maps.Data.Point) {
                         callback.call(thisArg, geometry.get());
                     } else {
-                        geometry.getArray().forEach(function(g) {
+                        geometry.getArray().forEach(function (g) {
                             processPoints(g, callback, thisArg);
                         });
                     }
                 }
 
                 function test(results, status) {
-                    //debugger;
+                    debugger;
                     if (status === google.maps.places.PlacesServiceStatus.OK) {
                         for (var i = 0; i < results.length; i++) {
                             createMarker(results[i]);
                         }
+                    }
+                    else {
+                        console.log("limit exceed");
                     }
                 }
 
@@ -212,8 +214,8 @@
                     var placeLoc = place.geometry.location;
                     var marker = new google.maps.Marker({
                         map: map,
-                        position: placeLoc0
-                      });
+                        position: placeLoc
+                    });
 
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.setContent(place.name);
@@ -265,15 +267,19 @@
                         // grab the file data from each file
                         for (var i = 0, file; file = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(file);
-
+                            document.getElementById('gpxtext').placeholder = file.name;
+                            $('#gpxtext').addClass('whiteplaceholder');
+                            $('#gpxtext').css({
+                                'background-color': '#65ca65'
+                            });
                         }
                     } else {
                         // process non-file (e.g. text or html) content being dropped
@@ -313,12 +319,11 @@
 
                         for (var i = 0, f; f = files[i]; i++) {
                             var reader = new FileReader();
-                            reader.onload = function(e) {
-                                debugger;
+                            reader.onload = function (e) {
                                 var result = e.target.result;
                                 loadGeoJsonString(JSON.stringify(toGeoJSON["gpx"]((new DOMParser()).parseFromString(result, 'text/xml')), null, 4));
                             };
-                            reader.onerror = function(e) {
+                            reader.onerror = function (e) {
                                 console.error('reading failed');
                             };
                             reader.readAsText(f);
@@ -343,7 +348,7 @@
             <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCysefPogjMjWtUQsqWKr_Hap4YrdxAoeo&libraries=places&callback=readFile" async defer></script>-->
 
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('[data-toggle="tooltip"]').tooltip();
                 });
             </script>
