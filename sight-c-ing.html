@@ -82,10 +82,25 @@
 
                     <p></p>
 
-                    <div id="landmarksTable" hidden="hidden"></div>
+
 
                     <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <!-- Nearby Landmarks -->
+                        <div class="card" id="haha" hidden="hidden">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" id="collapsibleOne" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Nearby Landmarks
+                                            </a>
+                                </h5>
+                            </div>
 
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="landmarksTable" hidden="hidden"></div>
+                            </div>
+                        </div>
+
+                        <!-- Use Instructions -->
                         <div class="card">
                             <div class="card-header" role="tab" id="headingTwo">
                                 <h5 class="mb-0">
@@ -212,6 +227,7 @@
                         strokeWeight: 6
                     });
 
+                    document.getElementById('haha').hidden = "";
                     document.getElementById('landmarksTable').hidden = "";
 
                     // landmark search
