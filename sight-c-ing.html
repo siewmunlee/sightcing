@@ -115,7 +115,7 @@
                             <div class="card-header" role="tab" id="headingTwo">
                                 <h5 class="mb-0">
                                     <a data-toggle="collapse" id="use-instructions" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                        Use Instructions
+                                        User Instructions
                                     </a>
                                 </h5>
                             </div>
@@ -378,16 +378,15 @@
                     if (placeRating > 0 && placePhoto != null) {
                         $("#landmarksTable").append('<div class="landmark"><img class="landmark-image" src="' + placePhoto + '"><div class="landmark-details"><div class="dropdown-profilename">' + place.name + '</div><div>' + place.vicinity + '</div><div>Rating: <strong>' + placeRating + '/5.0</strong></div><div>Telephone Number: +65 6' + mynumbr(3800000, 9499999) + '</div></div></div>');
                     }
-                    // else if (placeRating <= 0 && placePhoto != null) {
-                    //     $("#landmarksTable").append("test2");
-                    // } 
-                    // else if (placeRating > 0 && placePhoto == null) {
-                    //     $("#landmarksTable").append("test3");
-                    // } 
+                     else if (placeRating <= 0 && placePhoto != null) {
+                         $("#landmarksTable").append('<div class="landmark"><img class="landmark-image" src="' + placePhoto + '"><div class="landmark-details"><div class="dropdown-profilename">' + place.name + '</div><div>' + place.vicinity + '</div><div>Telephone Number: +65 6' + mynumbr(3800000, 9499999) + '</div></div></div>');
+                     } 
+                     else if (placeRating > 0 && placePhoto == null) {
+                         $("#landmarksTable").append('<div class="landmark"><img class="landmark-image" src="login/img/No_Image_Available.jpg"><div class="landmark-details"><div class="dropdown-profilename">' + place.name + '</div><div>' + place.vicinity + '</div><div>Rating: <strong>' + placeRating + '/5.0</strong></div><div>Telephone Number: +65 6' + mynumbr(3800000, 9499999) + '</div></div></div>');
+                    } 
                     else {
                         $("#landmarksTable").append('<div class="landmark"><img class="landmark-image" src="login/img/No_Image_Available.jpg"><div class="landmark-details"><div class="dropdown-profilename">' + place.name + '</div><div>' + place.vicinity + '</div><div>Telephone Number: +65 6' + mynumbr(3800000, 9499999) + '</div></div></div>');
                     }
-                    debugger;
                     var dropdowns = document.getElementById("landmarksTable");
                     if (dropdowns.children.length > 1) {
                         $("#landmarksheader").addClass("header-show");
