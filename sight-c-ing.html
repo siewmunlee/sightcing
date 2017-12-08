@@ -245,7 +245,7 @@
                     var feature = geojson.features[0];
                     var gg = feature.geometry;
 
-                    for (var i = 0; i < gg.coordinates.length; i += 20) {
+                    for (var i = 0; i < gg.coordinates.length; i += 10) {
                         var coord = gg.coordinates[i];
 
                         var loc = new google.maps.LatLng(coord[1], coord[0]);
@@ -253,26 +253,10 @@
                         service.nearbySearch({
                             location: loc,
                             radius: 60,
-                            type: ["restaurant"]
+                            type: ["point_of_interest"]
                         }, test);
 
-                        service.nearbySearch({
-                            location: loc,
-                            radius: 60,
-                            type: ["art_gallery"]
-                        }, test);
 
-                        service.nearbySearch({
-                            location: loc,
-                            radius: 60,
-                            type: ["museum"]
-                        }, test);
-
-                        service.nearbySearch({
-                            location: loc,
-                            radius: 60,
-                            type: ["shopping_mall"]
-                        }, test);
                     }
                     document.getElementById('landmarkCounter').innerHTML = landmarkCounter;
 
